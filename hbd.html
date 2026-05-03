@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Meera 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 800% 800%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .cake {
+            font-size: 120px;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate;
+        }
+
+        p {
+            color: white;
+            font-size: 22px;
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* Glow */
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff; }
+            to { text-shadow: 0 0 25px #ff66cc; }
+        }
+
+        /* Bounce */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-25px); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* Firework */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            to {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff66cc;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday Meera 🎉</h1>
+    <div class="cake" onclick="blast()">🎂</div>
+    <p>Tap the cake for surprise 🎁</p>
+
+    <button onclick="blast()">Celebrate 🎊</button>
+
+    <!-- Music -->
+    <audio autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function blast() {
+            // Confetti
+            for (let i = 0; i < 80; i++) {
+                let c = document.createElement("div");
+                c.className = "confetti";
+                c.style.left = Math.random() * 100 + "vw";
+                c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                c.style.backgroundColor =
+                    ["red","yellow","blue","green","pink"][Math.floor(Math.random()*5)];
+                document.body.appendChild(c);
+            }
+
+            // Fireworks
+            for (let i = 0; i < 20; i++) {
+                let f = document.createElement("div");
+                f.className = "firework";
+                f.style.left = Math.random() * 100 + "vw";
+                f.style.top = Math.random() * 100 + "vh";
+                f.style.backgroundColor =
+                    ["#ff0","#f0f","#0ff","#fff","#ff6600"][Math.floor(Math.random()*5)];
+                document.body.appendChild(f);
+
+                setTimeout(() => f.remove(), 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>
